@@ -1,5 +1,18 @@
 {
+    "main":{
+    "nothings":" Nothings here",
     "model":"Model:",
     "type": "Type:",
     "price":"Price:"
+},
+"dialog":{
+"add":"Add",
+"brand": "Brand",
+"model": "Model",
+"type": "Type",
+"price":"Price",
+"save": "Save",
+"cancel":"Cancel",
+"fil":"Fill out the form"
+}
 }

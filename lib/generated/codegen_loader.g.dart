@@ -15,14 +15,40 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> ru = {
-  "model": "Модель:",
-  "type": "Категория:",
-  "price": "Цена:"
+  "main": {
+    "nothings": "Ничего нет",
+    "model": "Модель:",
+    "type": "Категория:",
+    "price": "Цена:"
+  },
+  "dialog": {
+    "add": "Добавление",
+    "brand": "Бренд",
+    "model": "Модель",
+    "type": "Категория",
+    "price": "Цена",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "fil": "Заполните форму"
+  }
 };
 static const Map<String,dynamic> en = {
-  "model": "Model:",
-  "type": "Type:",
-  "price": "Price:"
+  "main": {
+    "nothings": " Nothings here",
+    "model": "Model:",
+    "type": "Type:",
+    "price": "Price:"
+  },
+  "dialog": {
+    "add": "Add",
+    "brand": "Brand",
+    "model": "Model",
+    "type": "Type",
+    "price": "Price",
+    "save": "Save",
+    "cancel": "Cancel",
+    "fil": "Fill out the form"
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "en": en};
 }

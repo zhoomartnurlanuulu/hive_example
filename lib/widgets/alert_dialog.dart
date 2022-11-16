@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive_tutorial_app/feature/data/hive/gadget_model.dart';
 import 'package:hive_tutorial_app/feature/data/hive/hive_name.dart';
+import 'package:hive_tutorial_app/generated/locale_keys.g.dart';
 
 class AppDialog extends StatefulWidget {
   final formKey = GlobalKey<FormState>();
@@ -25,9 +27,9 @@ class _AppDialogState extends State<AppDialog> {
     return AlertDialog(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
-      title: const Text(
-        'Добовление',
-        style: TextStyle(color: Colors.white),
+      title: Text(
+        LocaleKeys.dialog_add.tr(),
+        style: const TextStyle(color: Colors.white),
       ),
       elevation: 3,
       backgroundColor: Colors.deepOrange[900],
@@ -37,9 +39,9 @@ class _AppDialogState extends State<AppDialog> {
               foregroundColor: Colors.transparent,
               shadowColor: Colors.transparent),
           onPressed: _validateAndSave,
-          child: const Text(
-            'Сохранить',
-            style: TextStyle(color: Colors.white),
+          child: Text(
+            LocaleKeys.dialog_save.tr(),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
         TextButton(
@@ -49,9 +51,9 @@ class _AppDialogState extends State<AppDialog> {
           onPressed: () {
             context.router.pop(true);
           },
-          child: const Text(
-            'Отмена',
-            style: TextStyle(color: Colors.white),
+          child: Text(
+            LocaleKeys.dialog_cancel.tr(),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
       ],
@@ -66,7 +68,9 @@ class _AppDialogState extends State<AppDialog> {
                   children: [
                     TextFormField(
                       validator: (val) {
-                        return val!.trim().isEmpty ? 'Заполните форму' : null;
+                        return val!.trim().isEmpty
+                            ? LocaleKeys.dialog_fil.tr()
+                            : null;
                       },
                       onChanged: (value) {
                         setState(() {
@@ -83,7 +87,7 @@ class _AppDialogState extends State<AppDialog> {
                               borderSide: const BorderSide(color: Colors.teal),
                               borderRadius: BorderRadius.circular(20)),
                           hintStyle: const TextStyle(color: Colors.white),
-                          label: const Text('Бренд'),
+                          label: Text(LocaleKeys.dialog_brand.tr()),
                           labelStyle: const TextStyle(color: Colors.white)),
                     ),
                     const SizedBox(
@@ -91,7 +95,9 @@ class _AppDialogState extends State<AppDialog> {
                     ),
                     TextFormField(
                       validator: (val) {
-                        return val!.trim().isEmpty ? 'Заполните форму' : null;
+                        return val!.trim().isEmpty
+                            ? LocaleKeys.dialog_fil.tr()
+                            : null;
                       },
                       onChanged: (value) {
                         setState(() {
@@ -108,7 +114,7 @@ class _AppDialogState extends State<AppDialog> {
                               borderSide: const BorderSide(color: Colors.teal),
                               borderRadius: BorderRadius.circular(20)),
                           hintStyle: const TextStyle(color: Colors.white),
-                          label: const Text('Модель'),
+                          label: Text(LocaleKeys.dialog_model.tr()),
                           labelStyle: const TextStyle(color: Colors.white)),
                     ),
                     const SizedBox(
@@ -116,7 +122,9 @@ class _AppDialogState extends State<AppDialog> {
                     ),
                     TextFormField(
                       validator: (val) {
-                        return val!.trim().isEmpty ? 'Заполните форму' : null;
+                        return val!.trim().isEmpty
+                            ? LocaleKeys.dialog_fil.tr()
+                            : null;
                       },
                       onChanged: (value) {
                         setState(() {
@@ -133,7 +141,7 @@ class _AppDialogState extends State<AppDialog> {
                               borderSide: const BorderSide(color: Colors.teal),
                               borderRadius: BorderRadius.circular(20)),
                           hintStyle: const TextStyle(color: Colors.white),
-                          label: const Text('Категория'),
+                          label: Text(LocaleKeys.dialog_type.tr()),
                           labelStyle: const TextStyle(color: Colors.white)),
                     ),
                     const SizedBox(
@@ -141,7 +149,9 @@ class _AppDialogState extends State<AppDialog> {
                     ),
                     TextFormField(
                       validator: (val) {
-                        return val!.trim().isEmpty ? 'Заполните форму' : null;
+                        return val!.trim().isEmpty
+                            ? LocaleKeys.dialog_fil.tr()
+                            : null;
                       },
                       onChanged: (value) {
                         setState(() {
@@ -158,7 +168,7 @@ class _AppDialogState extends State<AppDialog> {
                               borderSide: const BorderSide(color: Colors.teal),
                               borderRadius: BorderRadius.circular(20)),
                           hintStyle: const TextStyle(color: Colors.white),
-                          label: const Text('Цена'),
+                          label: Text(LocaleKeys.dialog_price.tr()),
                           labelStyle: const TextStyle(color: Colors.white)),
                     ),
                   ],

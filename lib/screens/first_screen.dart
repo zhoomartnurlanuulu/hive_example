@@ -38,6 +38,8 @@ class _FirstScreenState extends State<FirstScreen> {
         title: const Text('Hive App'),
         actions: [
           DropdownButton<String>(
+              icon: const Icon(Icons.language),
+              focusColor: Colors.transparent,
               value: langVal,
               items: lang
                   .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -50,7 +52,6 @@ class _FirstScreenState extends State<FirstScreen> {
                   case 'Русский':
                     context.setLocale(const Locale('ru'));
                     break;
-                  default:
                 }
                 langVal = val;
               })
@@ -76,8 +77,8 @@ class _FirstScreenState extends State<FirstScreen> {
               Hive.box<GadgetModel>(HiveBoxes.gadgetModel).listenable(),
           builder: (context, Box<GadgetModel> box, __) {
             if (box.isEmpty) {
-              return const Center(
-                child: Text('Ничего нет'),
+              return Center(
+                child: Text(LocaleKeys.main_nothings.tr()),
               );
             }
             return ListView.separated(
@@ -98,7 +99,7 @@ class _FirstScreenState extends State<FirstScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: const [
                             Text(
-                              'Удалить  ',
+                              'Удалить   ',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white),
                             ),
@@ -133,7 +134,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  LocaleKeys.model.tr(),
+                                  LocaleKeys.main_model.tr(),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 15),
                                 ),
@@ -146,7 +147,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  LocaleKeys.type.tr(),
+                                  LocaleKeys.main_type.tr(),
                                   style: TextStyle(
                                       color: Colors.grey[700], fontSize: 15),
                                 ),
@@ -161,7 +162,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  LocaleKeys.price.tr(),
+                                  LocaleKeys.main_price.tr(),
                                   style: TextStyle(
                                       color: Colors.grey[700], fontSize: 15),
                                 ),
