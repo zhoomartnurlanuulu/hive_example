@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive_tutorial_app/feature/data/hive/gadget_model.dart';
 import 'package:hive_tutorial_app/feature/data/hive/hive_name.dart';
+import 'package:hive_tutorial_app/generated/locale_keys.g.dart';
 
 import 'package:hive_tutorial_app/widgets/alert_dialog.dart';
 import 'package:scaffold_gradient_background/scaffold_gradient_background.dart';
@@ -20,6 +22,11 @@ class _FirstScreenState extends State<FirstScreen> {
     super.dispose();
   }
 
+  List<String> lang = [
+    'English',
+    'Русский',
+  ];
+  String? langVal;
   @override
   Widget build(BuildContext context) {
     return ScaffoldGradientBackground(
@@ -29,6 +36,25 @@ class _FirstScreenState extends State<FirstScreen> {
           colors: [Colors.green, Colors.yellow.shade800]),
       appBar: AppBar(
         title: const Text('Hive App'),
+        actions: [
+          DropdownButton<String>(
+              value: langVal,
+              items: lang
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
+              onChanged: (val) {
+                switch (val) {
+                  case 'English':
+                    context.setLocale(const Locale('en'));
+                    break;
+                  case 'Русский':
+                    context.setLocale(const Locale('ru'));
+                    break;
+                  default:
+                }
+                langVal = val;
+              })
+        ],
         elevation: 2.5,
         backgroundColor: Colors.amber,
         primary: true,
@@ -106,9 +132,9 @@ class _FirstScreenState extends State<FirstScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const Text(
-                                  'Модель:',
-                                  style: TextStyle(
+                                Text(
+                                  LocaleKeys.model.tr(),
+                                  style: const TextStyle(
                                       color: Colors.black, fontSize: 15),
                                 ),
                                 Text(res?.model == null ? '' : res!.model,
@@ -120,7 +146,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  'Категория:',
+                                  LocaleKeys.type.tr(),
                                   style: TextStyle(
                                       color: Colors.grey[700], fontSize: 15),
                                 ),
@@ -135,7 +161,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  'Цена:',
+                                  LocaleKeys.price.tr(),
                                   style: TextStyle(
                                       color: Colors.grey[700], fontSize: 15),
                                 ),
